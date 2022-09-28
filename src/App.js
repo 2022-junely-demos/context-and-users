@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header/Header';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Auth from './components/Auth';
 import Tasks from './components/Tasks';
 
@@ -12,6 +12,9 @@ function App() {
       <Switch>
         <Route path="/auth/:type" component={Auth} />
         <Route path="/tasks" component={Tasks} />
+        <Route path="*">
+          <Redirect to="/auth/sign-in" />
+        </Route>
       </Switch>
     </div>
   );
