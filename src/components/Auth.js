@@ -20,7 +20,7 @@ export default function Auth({ user, setUser }) {
     // redirect to /tasks
   };
 
-  if (user.id) {
+  if (user) {
     return <Redirect to="/tasks" />;
   }
 

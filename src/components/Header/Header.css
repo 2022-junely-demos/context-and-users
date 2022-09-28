@@ -1,11 +1,12 @@
 header {
   height: 40px;
-  background-color: var(--color-blue);
+  background-color: var(--color-green);
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
+  color: var(--color-light);
 }
 
 header a,
