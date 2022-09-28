@@ -1,14 +1,29 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Redirect, useParams } from 'react-router-dom';
+import { authUser } from '../services/auth';
 
-export default function Auth() {
+export default function Auth({ user, setUser }) {
   const { type } = useParams();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const clickHandler = () => {
+  const clickHandler = async () => {
     console.log('clicking button');
+    // call authUser with state
+    const userResp = await authUser(email, password, type);
+    console.log(userResp);
+    // set user
+    setUser(userResp);
+    // reset the inputs
+    setEmail('');
+    setPassword('');
+    // redirect to /tasks
   };
+
+  if (user.id) {
+    return <Redirect to="/tasks" />;
+  }
+
   return (
     <div>
       <div className="form-controls">
