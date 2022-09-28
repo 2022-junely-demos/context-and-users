@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Redirect, useParams } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 import { authUser } from '../services/auth';
 
-export default function Auth({ user, setUser }) {
+export default function Auth() {
   const { type } = useParams();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const { user, setUser } = useContext(UserContext);
 
   const clickHandler = async () => {
     console.log('clicking button');
