@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { UserContext } from '../../context/UserContext';
+import { UserContext, useUser } from '../../context/UserContext';
 import { signOut } from '../../services/auth';
 import './Header.css';
 export default function Header() {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser } = useUser();
 
   const handleClick = async () => {
     await signOut();
